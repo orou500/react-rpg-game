@@ -2,9 +2,13 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo{
+  color: black;
+  text-decoration: none;
+}
+
+.logo:hover , .logo:focus{
+  text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -27,6 +31,22 @@
 .App-link {
   color: #61dafb;
 }
+
+.spinner {
+  font-size: 50px;
+  display: inline-block;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 @keyframes App-logo-spin {
   from {
