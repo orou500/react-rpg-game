@@ -50,7 +50,8 @@ function LoginForm(props) {
       } else {
         const accessToken = response.data.accessToken;
         const roles = response.data.roles
-        setAuth({user, accessToken, roles})
+        const character = response.data.character
+        setAuth({ user, accessToken, roles, character })
         navigate(from, { replace: true })
       }
     } catch (err) {

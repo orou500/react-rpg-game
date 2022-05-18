@@ -65,7 +65,8 @@ const handleSubmit = async (e) => {
       )
       if(response.data === 'this User already exists!'){
         setErrMsg('This User already exists!')
-      } else {
+      } 
+      if(response.data === 'New User!') {
         setSuccess(true)
       }
     } catch (err) {

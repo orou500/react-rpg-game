@@ -8,7 +8,7 @@ function Register() {
     const links = ['About'];
 
   return (
-    <div className='container-fluid'>
+    <div>
         <Header navLink={links} />
         <div className="container d-flex flex-column align-items-center justify-content-center">
             <div className='home'>

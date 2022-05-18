@@ -17,6 +17,7 @@ import RequireAuth from './components/RequireAuth';
 import Admin from './Pages/Admin';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import Logout from './Pages/Logout';
+import Profile from './Pages/Profile';
 
 
 if(process.env.NODE_ENV === 'production') {
@@ -35,6 +36,7 @@ root.render(
             {/* V Protected Routs V */}
             <Route element={<RequireAuth />}>
               <Route path='/' element={<App />} />
+              <Route path='/Profile' element={<Profile />} />
               <Route path='/Admin' element={<Admin />} />
               <Route path='/Logout' element={<Logout />} />
             </Route>
