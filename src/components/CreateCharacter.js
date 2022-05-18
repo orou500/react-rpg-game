@@ -70,7 +70,10 @@ function CreateCharacter() {
     <>
     { success ? (
         <section className='container d-flex flex-column align-items-center justify-content-center text-center'>
-          <h3>Congratulations, your Character has been successfully created.</h3>
+          <h3>Congratulations, your Character has been successfully created.</h3><br />
+          <p>Do you want to start your journey?</p>
+          <Link to="/Chapter1">Start Chapter 1</Link><br />
+          <p>Do you want to see your profile?</p>
           <Link to="/Profile">To Profile Page</Link> 
         </section>
     ) : (

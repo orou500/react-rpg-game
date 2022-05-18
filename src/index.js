@@ -18,6 +18,9 @@ import Admin from './Pages/Admin';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import Logout from './Pages/Logout';
 import Profile from './Pages/Profile';
+import Chapter1 from './Pages/Chapters/Chapter1';
+import Chapter2 from './Pages/Chapters/Chapter2';
+import Chapter3 from './Pages/Chapters/Chapter3';
 
 
 if(process.env.NODE_ENV === 'production') {
@@ -37,6 +40,9 @@ root.render(
             <Route element={<RequireAuth />}>
               <Route path='/' element={<App />} />
               <Route path='/Profile' element={<Profile />} />
+              <Route path='/Chapter1' element={<Chapter1 />} />
+              <Route path='/Chapter2' element={<Chapter2 />} />
+              <Route path='/Chapter3' element={<Chapter3 />} />
               <Route path='/Admin' element={<Admin />} />
               <Route path='/Logout' element={<Logout />} />
             </Route>

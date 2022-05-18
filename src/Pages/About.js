@@ -8,7 +8,7 @@ function About() {
     const user = useAuth()
 
     useEffect(() => {
-        user.auth.user || user.auth.user === ' ' ? setLinks(['Profile', 'Logout']) : setLinks(['Login'])
+        user.auth.user || user.auth.user === ' ' ? user.auth.character ? setLinks(['Profile', 'Logout']) : setLinks(['Logout']): setLinks(['Login'])
       }, [user])
 
   return (

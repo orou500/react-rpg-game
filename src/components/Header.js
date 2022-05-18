@@ -9,7 +9,7 @@ function Header(props) {
   return (
         <Navbar bg="light" className='d-flex' sticky='top' expand="lg" collapseOnSelect>
             <Navbar.Brand >
-                <Nav.Link><Link to={"/"} className="nav-link logo"><h1>Test Logo</h1></Link></Nav.Link>
+                <Nav.Link><Link to={"/"} className="nav-link logo"><h1>Game Logo</h1></Link></Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle className='m-2' />
             <Navbar.Collapse>
