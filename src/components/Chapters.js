@@ -9,10 +9,6 @@ import { Link } from 'react-router-dom';
 function Chapters(props) {
 
   const User = props.user.auth
-  
-   useEffect(() => {
-     console.log(User.character.ChaptersCompleted)
-   }, [User])
 
   return (
     <article>
@@ -21,9 +17,8 @@ function Chapters(props) {
           <Link to="/Chapter1">Chapter 1</Link>
           {
             User.character.ChaptersCompleted.map((chapterComp, index) =>{
-              console.log(index)
               if(chapterComp === (index + 1).toString()){
-                return (<Link to={"/Chapter" + (chapterComp + 1).toString()} key={(chapterComp + 1).toString()}>Chapter {(chapterComp + 1).toString()}</Link>)
+                return (<Link to={"/Chapter" + (parseInt(chapterComp) + 1).toString()} key={(parseInt(chapterComp) + 1).toString()}>Chapter {(parseInt(chapterComp) + 1).toString()}</Link>)
               }
             })
           }

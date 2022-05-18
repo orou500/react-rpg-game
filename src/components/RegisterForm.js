@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
       if(!err.response) {
         setErrMsg('Server Not Response')
       } else {
-        setErrMsg('Cant Find Server')
+        setErrMsg(err.response.data)
       }
       errRef.current.focus()
     }

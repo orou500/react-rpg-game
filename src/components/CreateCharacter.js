@@ -47,7 +47,10 @@ function CreateCharacter() {
                   },
               }
             )
-            if(response.data === 'this Character already exists!'){
+            
+            if(response.data === 'This is Bed Word!'){
+                setErrMsg('This is Bed Word!')
+            }else if(response.data === 'this Character already exists!'){
               setErrMsg('This Character already exists!')
             } else {
                 let charcter = response.data.charcter
@@ -100,7 +103,7 @@ function CreateCharacter() {
                 value={characterName}
                 aria-describedby="charnote"
                 aria-invalid={validChar ? "false" : "true"}
-                onFocus={() => setCharacterFocus(true)} 
+                onFocus={() => {setCharacterFocus(true); setErrMsg('')}} 
                 onBlur={() => setCharacterFocus(false)}
                 required
             />
