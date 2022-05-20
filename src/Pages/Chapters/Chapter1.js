@@ -2,19 +2,19 @@ import React, { useState, useEffect }  from 'react';
 import '../../App.css';
 import Header from '../../components/Header';
 import { useAuth } from '../../hooks/useAuth';
+import Battle1 from '../battles/battle1';
 
-function Chapter1( ) {
+function Chapter1() {
     const [links, setLinks] = useState(['Logout']);
     const [p1, setP1] = useState(true)
     const [p2, setP2] = useState(false)
     const [p3, setP3] = useState(false)
     const [p4, setP4] = useState(false)
     const [fight, setFight] = useState(false)
-    
+
     const user = useAuth()
     const charName = user.auth.character.name;
     const charWeapon = user.auth.character.weapon
-        
 
   return (
     <div>
@@ -53,14 +53,14 @@ function Chapter1( ) {
                     p4 &&
                     <p>
                         When {charName} goes out to fight the demon,
-                        he sees two more demons shouting at him in unintelligible
-                        language by this time the first demon has already had time to perform a spell and disappear into the darkness.<br /><br />
+                        he sees skeleton shouting at him in unintelligible
+                        language by this time the demon has already had time to perform a spell and disappear into the darkness.<br /><br />
                         <button onClick={() => {setP4(false); setFight(true)}}>Fight Them</button>
                     </p>
                 }
                 {
                     fight &&
-                    <p>Fight stage!</p>
+                    <Battle1 character={user.auth.character} />
                 }
             </div>  
         </div>
