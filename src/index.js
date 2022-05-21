@@ -21,6 +21,7 @@ import Profile from './Pages/Profile';
 import Chapter1 from './Pages/Chapters/Chapter1';
 import Chapter2 from './Pages/Chapters/Chapter2';
 import Chapter3 from './Pages/Chapters/Chapter3';
+import Store from './Pages/Store';
 
 
 if(process.env.NODE_ENV === 'production') {
@@ -40,6 +41,7 @@ root.render(
             <Route element={<RequireAuth />}>
               <Route path='/' element={<App />} />
               <Route path='/Profile' element={<Profile />} />
+              <Route path='/Store' element={<Store />} />
               <Route path='/Chapter1' element={<Chapter1 />} />
               <Route path='/Chapter2' element={<Chapter2 />} />
               <Route path='/Chapter3' element={<Chapter3 />} />

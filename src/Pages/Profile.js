@@ -5,11 +5,11 @@ import { useAuth } from '../hooks/useAuth';
 
 
 function Profile() {
-  const [links, setLinks] = useState(["About", "Logout"]);
+  const [links, setLinks] = useState(["Store", "About", "Logout"]);
   const user = useAuth()
 
   useEffect(() => {
-    user.auth.roles.find(role => role === '9278') ? setLinks(["About", "Logout", 'Admin']): setLinks(["About", "Logout"])
+    user.auth.roles.find(role => role === '9278') ? setLinks(["Store", "About", "Logout", 'Admin']): setLinks(["Store", "About", "Logout"])
  }, [user])
 
   return (
@@ -29,6 +29,7 @@ function Profile() {
             <p>Character Strength: {user.auth.character.strength}</p>
             <p>Character Speed: {user.auth.character.speed}</p>
             <p>Character Defense: {user.auth.character.defense}</p>
+            <p>Character Gold: {user.auth.character.gold} gold</p>
           </div>
         </div>
       </div>

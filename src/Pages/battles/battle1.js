@@ -13,10 +13,10 @@ function Battle1(props) {
       defense: 3,
       hp: 7,
       level: 1,
-      name: 'Val Killmore',
+      name: 'KillmoreJR',
       speed: 2,
       strength: 4,
-      weapon: "Bone Bword",
+      weapon: "Bone Sword",
   }
 
   const [turn, setTurn] = useState(0);

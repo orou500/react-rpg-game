@@ -11,10 +11,22 @@ function Chapter1() {
     const [p3, setP3] = useState(false)
     const [p4, setP4] = useState(false)
     const [fight, setFight] = useState(false)
+    const [isAvailable, setIsAvailable] = useState(false)
 
     const user = useAuth()
     const charName = user.auth.character.name;
     const charWeapon = user.auth.character.weapon
+
+    const handleIsAvilable = () => {
+        isAvailable ? setIsAvailable(false) : setIsAvailable(true);
+        setIsAvailable(false) 
+    }
+
+    useEffect(() => {
+        setTimeout(function(){
+            setIsAvailable(true)
+        }, 3000);
+    }, [p1,p2,p3,p4])
 
   return (
     <div>
@@ -30,7 +42,9 @@ function Chapter1() {
                     <p>
                         After a long day of hunting to take care of his father's butcher shop.<br />
                         {charName} goes to sleep peacefully.<br /><br />
-                        <button onClick={() => {setP1(false); setP2(true)}}>Next</button>
+                        {
+                            isAvailable ? (<button onClick={() => {setP1(false); setP2(true);handleIsAvilable()}}>Next</button>) : (<></>)
+                        }
                     </p>
                 }
                 {
@@ -38,7 +52,9 @@ function Chapter1() {
                     <p>
                         Suddenly in the early hours of the morning<br /> 
                         {charName} gets up from loud shouts heard outside his bedroom window.<br /><br />
-                        <button onClick={() => {setP2(false); setP3(true)}}>Next</button>
+                        {
+                            isAvailable ? (<button onClick={() => {setP2(false); setP3(true);handleIsAvilable()}}>Next</button>) : (<></>)
+                        }
                     </p>
                 }
                 {
@@ -46,7 +62,9 @@ function Chapter1() {
                     <p>
                         Outside the window {charName} sees his sister being cruelly taken by a demon.<br />
                         Quickly {charName} gets dressed, takes his {charWeapon} and goes outside.<br /><br />
-                        <button onClick={() => {setP3(false); setP4(true)}}>Next</button>
+                        {
+                            isAvailable ? (<button onClick={() => {setP3(false); setP4(true);handleIsAvilable()}}>Next</button>) : (<></>)
+                        }
                     </p>
                 }
                 {
@@ -55,7 +73,9 @@ function Chapter1() {
                         When {charName} goes out to fight the demon,
                         he sees skeleton shouting at him in unintelligible
                         language by this time the demon has already had time to perform a spell and disappear into the darkness.<br /><br />
-                        <button onClick={() => {setP4(false); setFight(true)}}>Fight Them</button>
+                        {
+                            isAvailable ? (<button onClick={() => {setP4(false); setFight(true);handleIsAvilable()}}>Fight!</button>) : (<></>)
+                        }
                     </p>
                 }
                 {

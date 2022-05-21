@@ -14,7 +14,7 @@ function App() {
   const character = useAuth().auth.character
 
   useEffect(() => {
-    character ? setLinks(["Profile", "About", "Logout"]) : setLinks(["About", "Logout"])
+    character ? setLinks(["Profile", "Store", "About", "Logout"]) : setLinks(["About", "Logout"])
  }, [character])
 
   return (
