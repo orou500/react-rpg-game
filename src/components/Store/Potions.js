@@ -12,18 +12,23 @@ function Potions(props) {
     }
 
     const [healingAmount, setHealingAmount] = useState(1);
-    const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        if(!healingAmount){
+            setHealingAmount(1)
+        }
+      }, [healingAmount])
 
     const handleHealingAmount = (e) => {
-        if(e.target.value <= 0 || e.target.value >= 100 || e.target.value % 1 !== 0){
-            e.target.value = e.target.placeholder
+
+        if(e.target.value <= 0 || e.target.value >= 100 || e.target.value % 1 !== 0 || e.target.value === ''){
+            e.target.value = parseInt(e.target.placeholder)
         }
 
-        setHealingAmount(e.target.value)
     }
 
     const handleAddToCart = () => {
-
+        
         const check = props.cartItems.find(e => e.name === poions.healingPotion.name)
         if(!check){
             props.setTotalPrice(props.totalPrice + (poions.healingPotion.price * healingAmount))

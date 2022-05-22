@@ -19,7 +19,7 @@ function Profile() {
         <div className='about'>
           <h1>Profile Page:</h1>
           <div className='description'>
-            <p>Account Name: {user.auth.user}</p>
+            <h5>Account Name: {user.auth.user}</h5>
             <p>Character Name: {user.auth.character.name}</p>
             <p>Character Class: {user.auth.character.className}</p>
             <p>Character Weapon: {user.auth.character.weapon}</p>
@@ -30,6 +30,27 @@ function Profile() {
             <p>Character Speed: {user.auth.character.speed}</p>
             <p>Character Defense: {user.auth.character.defense}</p>
             <p>Character Gold: {user.auth.character.gold} gold</p>
+            <p>items:</p>
+            {
+              user.auth.character.items.length !== 0 ? (
+                <div className='items container d-flex flex-md-row flex-wrap align-items-center justify-content-center'>
+                  {
+                    user.auth.character.items.map((item) => {
+                      return (
+                        <div className='item m-4'>
+                          <h5>{item.name}</h5>
+                          <p>Amount: {item.amount}</p>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              ) : (
+                <div>
+                  <p>You dont have items</p>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

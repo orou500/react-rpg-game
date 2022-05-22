@@ -18,13 +18,11 @@ function Store() {
   const [errMsg, setErrMsg] = useState('');
   const errRef = useRef();
   const user = useAuth()
-  const yourGold = user.auth.character.gold
+  
+  const [yourGold, setYourGold] = useState(user.auth.character.gold);
 
   useEffect(() => {
     setNumberOfCartItems(numberOfCartItems + 1)
-  }, [cartItems])
-
-  useEffect(() => {
   }, [cartItems])
 
   const handleSubmit = async (e) => {
@@ -44,10 +42,10 @@ function Store() {
           if(response.data.charcter){
             let charcter = response.data.charcter
             user.auth.character = charcter
-            console.log(user)
-            yourGold = user.auth.character.gold
+            user.auth.accessToken = response.data.newToken
           }
-            // navigate('/Login', { replace: true })
+          setYourGold(user.auth.character.gold)
+          // navigate('/Login', { replace: true })
   
         } catch (err) {
           if(!err.response) {
