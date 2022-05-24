@@ -26,60 +26,9 @@ function Battle1(props) {
 
   const [opponentcurrentHp, setOpponentCurrentHp] = useState(Skeleton.hp);
   const [usercurrentHp, setUserCurrentHp] = useState(character.hp);
+  const [currentHealingPotion, setCurrentHealingPotion] = useState(0);
 
-
-
-const handleAction = (value) => {
-    setNameTurn(character.name)
-    setAction(value)
-    setTurn(turn + 1)
-    setShowMassage(true)
-    
-    if(value === 'Attack'){
-        const damage = Math.floor((Math.random() * character.strength + 1) * (100/(100+Skeleton.defense)))
-        setOpponentCurrentHp(opponentcurrentHp - damage)
-    } else if ( value === 'Heal') {
-        const Heal = Math.floor((Math.random() * Skeleton.defense + 1) * (100/(100+character.hp)))
-        let newUsercurrentHp = usercurrentHp + Heal
-        if(newUsercurrentHp > character.hp){
-            newUsercurrentHp = character.hp
-        }
-        setUserCurrentHp(usercurrentHp + Heal)
-    }
-    setTimeout(function(){
-        setNameTurn(Skeleton.name)
-
-        if(opponentcurrentHp === Skeleton.hp){
-            setAction('Attack')
-            const damage = Math.floor((Math.random() * Skeleton.strength + 1) * (100/(100+character.defense)))
-            setUserCurrentHp(usercurrentHp - damage)
-            
-        }else {
-            const opponentChose = Math.floor(Math.random() * 2)
-            if(opponentChose === 0){
-                setAction('Attack')
-                const damage = Math.floor((Math.random() * Skeleton.strength + 1) * (100/(100+character.defense)))
-                setUserCurrentHp(usercurrentHp - damage)
-                        
-            } else {
-                setAction('Heal')
-                const Heal = Math.floor((Math.random() * character.defense + 1) * (100/(100+Skeleton.hp)))
-                let newOpcurrentHp = opponentcurrentHp + Heal
-                if(newOpcurrentHp > Skeleton.hp){
-                    newOpcurrentHp = Skeleton.hp
-                }
-                setOpponentCurrentHp(newOpcurrentHp)
-                
-            }
-        }
-        setTimeout(function(){
-            setShowMassage(false)
-            setTurn(turn + 1)
-        }, 3000);
-    }, 3000);
-}
-
-useEffect(() => {
+  useEffect(() => {
     if(opponentcurrentHp <= 0){
         setOpponentCurrentHp(0)
         setNameTurn(character.name)
@@ -92,6 +41,88 @@ useEffect(() => {
         setShowMassage(true)
     }
  })
+
+ useEffect(() => {
+    const healingPotion = character.items.find(item => item.name === 'Healing Potion');
+    if(turn === 0){
+        setCurrentHealingPotion(healingPotion.amount)
+    }
+    },[currentHealingPotion] )
+
+  useEffect(() => {
+
+    if(usercurrentHp > character.hp){
+        console.log(usercurrentHp)
+        usercurrentHp = character.hp
+        console.log(character.hp)
+    }
+
+    if(turn !== 0){
+        if(opponentcurrentHp > 0){
+            if(usercurrentHp > 0){
+                if(turn % 2 !== 0){
+                    AIAction()
+                }
+            }
+        }
+    }
+},[opponentcurrentHp, usercurrentHp] )
+
+const handleAction = (value) => {
+    setNameTurn(character.name)
+    setAction(value)
+    setTurn(turn + 1)
+    setShowMassage(true)
+    
+    if(value === 'Attack'){
+        const damage = Math.floor((Math.random() * character.strength + 1) * (100/(100+Skeleton.defense)))
+        setOpponentCurrentHp(opponentcurrentHp - damage)
+    } else if ( value === 'Heal') {
+        const healingPotion = character.items.find(item => item.name === 'Healing Potion');
+        setCurrentHealingPotion(currentHealingPotion - 1)
+        const Heal = Math.floor((Math.random() * Skeleton.defense + 1) * (100/(100+character.hp)))
+        let newUsercurrentHp = usercurrentHp + Heal
+        if(newUsercurrentHp > character.hp){
+            newUsercurrentHp = character.hp
+        }
+        setUserCurrentHp(newUsercurrentHp)
+    }
+    setTimeout(function(){
+        setShowMassage(false)
+
+    }, 3000)
+}
+
+const AIAction = () => {
+    setTimeout(function(){
+        setNameTurn(Skeleton.name)
+
+        if(opponentcurrentHp === Skeleton.hp){
+            setAction('Attack')
+            const damage = Math.floor((Math.random() * Skeleton.strength + 1) * (100/(100+character.defense)))
+            setUserCurrentHp(usercurrentHp - damage)
+            setShowMassage(true)
+            setTurn(turn + 1)
+            setTimeout(function(){
+                setShowMassage(false)
+        
+            }, 3000)
+            
+        } else {
+            const opponentChose = Math.floor(Math.random() * 2)
+            setAction('Attack')
+            const damage = Math.floor((Math.random() * Skeleton.strength + 1) * (100/(100+character.defense)))
+            setUserCurrentHp(usercurrentHp - damage)
+            setShowMassage(true)
+            setTurn(turn + 1)
+            setTimeout(function(){
+                setShowMassage(false)
+        
+            }, 3000)
+                        
+        }
+    }, 3000);
+}
 
   return (
     <div className='d-flex flex-column gap-3 p-5'>
@@ -111,7 +142,12 @@ useEffect(() => {
             {
                 !showMassage ? (
                     <div className='d-flex flex-row justify-content-center gap-5'>
-                        <UserAction setNewAction={handleAction} currentHp={usercurrentHp} character={character}/>
+                        <UserAction setNewAction={handleAction}
+                        setCurrentHealingPotion={setCurrentHealingPotion}
+                        currentHealingPotion={currentHealingPotion}
+                        currentHp={usercurrentHp}
+                        character={character}
+                        />
                     </div>
                 ) : (
                     <div className='d-flex flex-row justify-content-center gap-5'>
