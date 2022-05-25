@@ -10,6 +10,8 @@ function Chapter1() {
     const [p2, setP2] = useState(false)
     const [p3, setP3] = useState(false)
     const [p4, setP4] = useState(false)
+    const [p5, setP5] = useState(true)
+    const [p6, setP6] = useState(false)
     const [fight, setFight] = useState(false)
     const [isAvailable, setIsAvailable] = useState(false)
 
@@ -80,7 +82,18 @@ function Chapter1() {
                 }
                 {
                     fight &&
-                    <Battle1 character={user.auth.character} />
+                    <Battle1 character={user.auth.character} setFight={setFight} setP5={setP5}/>
+                }
+                {
+                    !p4 && !fight && !p5 &&
+                    <p>
+                    When {charName} goes out to fight the demon,p5
+                    he sees skeleton shouting at him in unintelligible p5
+                    language by this time the demon has already had time to perform a spell and disappear into the darkness.<br /><br />
+                    {
+                        isAvailable ? (<button onClick={() => {setP5(true); setP6(false);handleIsAvilable()}}>Next</button>) : (<></>)
+                    }
+                </p>
                 }
             </div>  
         </div>
