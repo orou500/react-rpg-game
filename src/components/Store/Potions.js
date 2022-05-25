@@ -14,6 +14,7 @@ function Potions(props) {
     const [healingAmount, setHealingAmount] = useState(1);
 
     useEffect(() => {
+        console.log(healingAmount)
         if(!healingAmount){
             setHealingAmount(1)
         }
@@ -23,6 +24,8 @@ function Potions(props) {
 
         if(e.target.value <= 0 || e.target.value >= 100 || e.target.value % 1 !== 0 || e.target.value === ''){
             e.target.value = parseInt(e.target.placeholder)
+        } else {
+            setHealingAmount(e.target.value)
         }
 
     }

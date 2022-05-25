@@ -132,13 +132,18 @@ const AIAction = () => {
     }, 3000);
 }
 
+const afterEndBattle = () => {
+    props.setFight(false)
+    props.setP5(false)
+}
+
   return (
     <div className='d-flex flex-column gap-3 p-5'>
         {
             battelEnd ? winner.name === character.name ? (
                     <div>
                         <p>{winner.name} win the battle!</p>
-                        <button onClick={() => {props.setFight(false); props.setP5(false)}}>Continue</button>
+                        <button onClick={afterEndBattle}>Continue</button>
                     </div>
                 ) : (
                     <div>
