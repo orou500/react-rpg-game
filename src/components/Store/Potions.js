@@ -14,7 +14,6 @@ function Potions(props) {
     const [healingAmount, setHealingAmount] = useState(1);
 
     useEffect(() => {
-        console.log(healingAmount)
         if(!healingAmount){
             setHealingAmount(1)
         }
