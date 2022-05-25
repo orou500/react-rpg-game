@@ -132,7 +132,21 @@ const AIAction = () => {
     }, 3000);
 }
 
+const reward = () => {
+    const healingPotion = character.items.find(item => item.name === 'Healing Potion');
+    if(healingPotion) {
+        const newCharacterItems = character.items.map(item => {
+            if(item.name === 'Healing Potion'){
+                return {...item, amount: currentHealingPotion}
+            }
+        })
+        props.character.items = newCharacterItems
+    }
+    props.character.gold += 10
+}
+
 const afterEndBattle = () => {
+    reward()
     props.setFight(false)
     props.setP5(false)
 }
