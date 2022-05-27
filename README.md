@@ -5,7 +5,7 @@ RPG web game by Or Moshe.
 start your journey with your character in my fantasy story line.
 buy items and fight creachers from fantasy world.
 
-![image](https://gcdnb.pbrd.co/images/4GXCY5BgVDsx.png?o=1)
+![image](https://i.postimg.cc/pTQQ7SsV/1.png)
 
 ## 💡 Features
 
