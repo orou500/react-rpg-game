@@ -7,6 +7,10 @@ buy items and fight creachers from fantasy world.
 
 ![image](https://i.postimg.cc/pTQQ7SsV/1.png)
 
+## 🕹 Demo
+
+Go to: https://game-app-or.herokuapp.com/
+
 ## 💡 Features
 
 - Authentication
