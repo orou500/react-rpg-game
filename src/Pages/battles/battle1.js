@@ -227,7 +227,6 @@ const afterEndBattle = async () => {
             </div>
             )
         }
-        <Footer />
     </div>
   );
 }
