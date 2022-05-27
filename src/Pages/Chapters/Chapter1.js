@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import '../../App.css';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { useAuth } from '../../hooks/useAuth';
 import Battle1 from '../battles/battle1';
@@ -87,9 +88,7 @@ function Chapter1() {
                 {
                     !p4 && !fight && !p5 &&
                     <p>
-                    When {charName} goes out to fight the demon,p5
-                    he sees skeleton shouting at him in unintelligible p5
-                    language by this time the demon has already had time to perform a spell and disappear into the darkness.<br /><br />
+                    Thank you {charName}! for playing the Alpha version.<br /><br />
                     {
                         isAvailable ? (<button onClick={() => {setP5(true); setP6(false);handleIsAvilable()}}>Next</button>) : (<></>)
                     }
@@ -97,6 +96,7 @@ function Chapter1() {
                 }
             </div>  
         </div>
+        <Footer />
     </div>
   );
 }

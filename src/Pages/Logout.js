@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useAuth } from '../hooks/useAuth';
 
@@ -27,6 +28,7 @@ function Logout() {
                 <p>You have successfully logged out!</p>
             </div>  
         </div>
+        <Footer />
     </div>
   );
 }

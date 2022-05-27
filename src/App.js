@@ -2,9 +2,9 @@ import React, { useState, useEffect }  from 'react';
 import './App.css';
 import Chapters from './components/Chapters';
 import CreateCharacter from './components/CreateCharacter';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import { useAuth } from './hooks/useAuth';
-
 
 function App() {
   const [links, setLinks] = useState([]);
@@ -37,6 +37,7 @@ function App() {
               </div>
             )
           }
+        <Footer />
     </div>
   );
 }

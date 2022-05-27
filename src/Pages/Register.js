@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
 
@@ -18,6 +19,7 @@ function Register() {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
   );
 }

@@ -1,13 +1,17 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect, useRef }  from 'react';
+import axios from '../../api/axios';
 import '../../App.css';
 import ShowMassage from './components/ShowMassage';
 import ShowStats from './components/ShowStats';
 import UserAction from './components/UserAction';
+import { useAuth } from '../../hooks/useAuth';
+import Footer from '../../components/Footer';
 
 
 function Battle1(props) {
 
   const character = props.character
+  const user = useAuth()
 
   const Skeleton = {
       className: 'Skeleton',
@@ -31,6 +35,8 @@ function Battle1(props) {
 
   const [battelEnd, setBattelEnd] = useState(false);
   const [winner, setWinner] = useState({});
+  const [errMsg, setErrMsg] = useState('');
+  const errRef = useRef();
 
   useEffect(() => {
     if(opponentcurrentHp <= 0){
@@ -145,10 +151,33 @@ const reward = () => {
     props.character.gold += 10
 }
 
-const afterEndBattle = () => {
+const afterEndBattle = async () => {
     reward()
     props.setFight(false)
     props.setP5(false)
+
+    try{
+        const response = await axios.post("/Aftergame", 
+          JSON.stringify({character: character}),
+          {
+            headers: {
+                'Authorization': user.auth.accessToken,
+                'Content-Type': 'application/json'
+              },
+          }
+        )
+        if(response.data.newCharacter){
+            character = response.data.newCharacter
+            user.auth.accessToken = response.data.newToken
+        }
+
+      } catch (err) {
+        if(!err.response) {
+          setErrMsg('success!')
+        } else {
+          setErrMsg('Cant Find Server')
+        }
+      }
 }
 
   return (
@@ -157,6 +186,7 @@ const afterEndBattle = () => {
             battelEnd ? winner.name === character.name ? (
                     <div>
                         <p>{winner.name} win the battle!</p>
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <button onClick={afterEndBattle}>Continue</button>
                     </div>
                 ) : (
@@ -197,6 +227,7 @@ const afterEndBattle = () => {
             </div>
             )
         }
+        <Footer />
     </div>
   );
 }

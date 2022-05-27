@@ -1,5 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useAuth } from '../hooks/useAuth';
 
@@ -19,13 +20,10 @@ function About() {
                 <h1>About Page</h1>
             </div>
             <div className='description'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-            </div>  
+                <p>RPG web game by Or Moshe. <br /> start your journey with your character in my fantasy story line.<br /> buy items and fight creachers from fantasy world.</p>
+            </div>
         </div>
+        <Footer />
     </div>
   );
 }

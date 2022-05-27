@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import LoginForm from '../components/LoginForm';
 
@@ -18,6 +19,7 @@ function Login() {
                 <LoginForm/>
             </div>  
         </div>
+        <Footer />
     </div>
   );
 }

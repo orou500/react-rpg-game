@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useAuth } from '../hooks/useAuth';
 
@@ -54,6 +55,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

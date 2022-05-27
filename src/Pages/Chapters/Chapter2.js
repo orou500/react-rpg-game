@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import '../../App.css';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 function Chapter2( ) {
@@ -16,6 +17,7 @@ function Chapter2( ) {
                 <p>Chapter 2</p>
             </div>  
         </div>
+        <Footer />
     </div>
   );
 }

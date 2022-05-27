@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../api/axios';
 import '../App.css';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Potions from '../components/Store/Potions';
 import { useAuth } from '../hooks/useAuth';
 import '../Style/Form.css';
-
-
 
 function Store() {
   const [links, setLinks] = useState(["Profile", "About", "Logout"]);
@@ -45,7 +44,7 @@ function Store() {
             user.auth.accessToken = response.data.newToken
           }
           setYourGold(user.auth.character.gold)
-          // navigate('/Login', { replace: true })
+          setErrMsg('thanks for buying!')
   
         } catch (err) {
           if(!err.response) {
@@ -141,6 +140,7 @@ function Store() {
           )
         }
       </div>
+      <Footer />
     </div>
   );
 }
