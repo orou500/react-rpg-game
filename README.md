@@ -29,7 +29,7 @@ buy items and fight creachers from fantasy world.
 
 ## 📷 Photos
 
-![image](https://gcdnb.pbrd.co/images/4GXCY5BgVDsx.png?o=1)
+![image](https://i.postimg.cc/pTQQ7SsV/1.png)
 
 ![image](https://gcdnb.pbrd.co/images/jn8J1Dp4PJS6.png?o=1)
 
