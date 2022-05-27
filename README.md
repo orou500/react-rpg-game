@@ -6,7 +6,7 @@ start your journey with your character in my fantasy story line.
 buy items and fight creachers from fantasy world.
 
 
-![image]([https://media.giphy.com/media/eN0zxvgFPGH98I49Li/giphy.gif](https://img.onl/LZb9OD))
+[![image]([https://media.giphy.com/media/eN0zxvgFPGH98I49Li/giphy.gif](https://img.onl/LZb9OD))](https://img.onl/LZb9OD)
 
 ## 💡 Features
 
